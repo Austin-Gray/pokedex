@@ -17,19 +17,22 @@
     "build": "react-scripts build",
     "start": "concurrently \"cross-env BROWSER=none yarn react-scripts start\" \"wait-on http://localhost:3000 && electron .\"",
     "pack": "electron-builder --dir",
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=public/assets/icons/mac/icon.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . pokedex --overwrite --asar=true --platform=win32 --arch=ia32 --icon=public/assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Pokedex\"",    
-    "package-linux": "electron-packager . pokedex --overwrite --asar=true --platform=linux --arch=x64 --icon=public/assets/icons/png/icon.png --prune=true --out=release-builds",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=public/assets/icons/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . pokedex --overwrite --asar=true --platform=win32 --arch=ia32 --icon=public/assets/icons/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Pokedex\"",
+    "package-linux": "electron-packager . pokedex --overwrite --asar=true --platform=linux --arch=x64 --icon=public/assets/icons/icon.png --prune=true --out=release-builds",
     "test": "react-scripts test",
     "dist": "npx build --x64 --macos --win --linux --c.extraMetadata.main=build/electron.js -p always",
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "electron-is-dev": "^0.3.0",
     "electron-publisher-s3": "^20.17.2",
     "react": "^16.4.1",
     "react-dev-utils": "^5.0.1",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "concurrently": "^3.6.0",

@@ -1,5 +1,4 @@
 const { app, BrowserWindow, shell, ipcMain, Menu, TouchBar } = require('electron');
-const { TouchBarButton, TouchBarLabel, TouchBarSpacer } = TouchBar;
 
 const path = require('path');
 const isDev = require('electron-is-dev');
@@ -18,7 +17,7 @@ createWindow = () => {
 		},
 		height: 860,
 		width: 1280,
-		icon: path.join(__dirname, 'public/assets/icons/png/icon.png')
+		icon: path.join(__dirname, 'assets/icons/icon.png')
 	});
 
 	mainWindow.loadURL(
