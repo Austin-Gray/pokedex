@@ -19,7 +19,7 @@ class App extends Component {
   componentDidMount() {
     axios.get('https://pokeapi.co/api/v2/pokemon/')
       .then(response => {
-        this.setState({ pokemon: response.data.results })
+        this.setState({ pokemon: response.data.results.slice(0,802) })
       })
       .catch(() => alert('The Pokedex could not load Pokemon information, please check your internet connection.'))
   }

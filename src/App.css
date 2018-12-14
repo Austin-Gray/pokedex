@@ -1,3 +1,34 @@
 .App {
   text-align: center;
 }
+
+img {
+  height: 200px;
+  width: 200px;
+  margin: auto;
+  display: block;
+}
+
+.description {
+  font-size: 18px;
+}
+
+.link {
+  display: inline-block;
+  color: #343a40;
+  font-size: 28px;
+  line-height: 24px;
+  text-decoration: none;
+}
+
+.return-link {
+  display: inline-block;
+  color: #343a40;
+  font-size: 18px;
+  line-height: 24px;
+  text-decoration: none;
+}
+
+.sprite {
+  text-align: center
+}

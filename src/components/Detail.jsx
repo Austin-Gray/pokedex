@@ -10,6 +10,7 @@ class Detail extends Component {
       name: '',
       number: '',
       sprite: '',
+      description: '',
       height: '',
       weight: '',
       types: ''
@@ -33,26 +34,40 @@ class Detail extends Component {
             types
           })
         })
+      axios.get(`https://pokeapi.co/api/v2/pokemon-species/${this.props.selection}/`)
+      .then(response => {
+        this.setState({
+          description: response.data.flavor_text_entries[1].flavor_text,
+        })
+      })
     }
   }
 
   render() {
     if (!this.props.selection) return <Redirect push to='/' />
     return (
-      <div>
-        <div>
-          <h1>{this.props.capitalize(this.state.name)}</h1>
+      <div className='container text-dark'>
+        <div className='row'>
+          <div className='col-12 heading jumbotron bg-white text-center pb-1'>
+            <h1>{this.props.capitalize(this.state.name)}</h1>
+          </div>
         </div>
-        <div>
-          <img src={this.state.sprite} alt={this.props.capitalize(this.state.name)} />
-          <p># {this.state.number}</p>
+        <div className='row'>
+          <div className='sprite col text-center align-content-center card bg-light pb-3'>
+            <img src={this.state.sprite} alt={this.props.capitalize(this.state.name)} />
+            <h5># {this.state.number}</h5>
+          </div>
+          <div className='col-1'></div>
+          <div className='col-7 card bg-dark text-white pt-2'>
+            <p className='description'>{this.state.description}</p>
+            <h5>Type: {this.state.types}</h5>
+            <h5>Height: {this.state.height} m</h5>
+            <h5>Weight: {this.state.weight} kg</h5>
+          </div>
         </div>
-        <div>
-          <p>Type: {this.state.types}</p>
-          <p>Height: {this.state.height} m</p>
-          <p>Weight: {this.state.weight} kg</p>
+        <div className='text-center mt-3'>
+          <Link to='/' className='return-link' >Return to Main Page</Link>
         </div>
-        <Link to='/' >Return to Main Page</Link>
       </div>
     );
   }

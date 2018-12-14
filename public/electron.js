@@ -15,8 +15,8 @@ createWindow = () => {
 			nodeIntegration: false,
 			preload: __dirname + '/preload.js',
 		},
-		height: 860,
-		width: 1280,
+		height: 800,
+		width: 1000,
 		icon: path.join(__dirname, 'assets/icons/icon.png')
 	});
 
