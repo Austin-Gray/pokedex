@@ -13,6 +13,7 @@ class App extends Component {
       selection: ''
     };
     this.selectPokemon = this.selectPokemon.bind(this);
+    this.capitalize = this.capitalize.bind(this);
   }
 
   componentDidMount() {
@@ -20,11 +21,15 @@ class App extends Component {
       .then(response => {
         this.setState({ pokemon: response.data.results })
       })
-      // .catch(() => alert('The Pokedex could not load Pokemon information, please check your internet connection.'))
+      .catch(() => alert('The Pokedex could not load Pokemon information, please check your internet connection.'))
   }
 
   selectPokemon(e) {
     this.setState({ selection: e.target.name })
+  }
+
+  capitalize(name) {
+    if (typeof name === 'string') return name.charAt(0).toUpperCase() + name.slice(1)
   }
 
   render() {
@@ -32,9 +37,9 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path='/' render={props => 
-            <Pokemon {...props} pokemon={this.state.pokemon} selectPokemon={this.selectPokemon} />} />
+            <Pokemon {...props} pokemon={this.state.pokemon} selectPokemon={this.selectPokemon} capitalize={this.capitalize} />} />
           <Route path='/detail' render={props => 
-            <Detail {...props} selection={this.state.selection} />} />
+            <Detail {...props} selection={this.state.selection} capitalize={this.capitalize} />} />
         </div>
       </Router>
     );

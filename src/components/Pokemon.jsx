@@ -5,12 +5,12 @@ const Pokemon = props => {
   return (
     <div>
       <ol>
-        {props.pokemon.map((species, index) => (
+        {props.pokemon.map(species => (
           <Card
-            key = {index + 1}
-            number = {index + 1}
+            key = {species.name}
             name = {species.name}
             selectPokemon = {props.selectPokemon}
+            capitalize = {props.capitalize}
           />
         ))}
       </ol>
