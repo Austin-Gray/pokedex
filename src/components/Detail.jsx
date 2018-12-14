@@ -36,8 +36,11 @@ class Detail extends Component {
         })
       axios.get(`https://pokeapi.co/api/v2/pokemon-species/${this.props.selection}/`)
       .then(response => {
+        let description = response.data.flavor_text_entries.find(entry => {
+          return entry.language.name === 'en'
+        })
         this.setState({
-          description: response.data.flavor_text_entries[1].flavor_text,
+          description: description.flavor_text,
         })
       })
     }
